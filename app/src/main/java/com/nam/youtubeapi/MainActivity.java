@@ -14,7 +14,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 public class MainActivity extends YouTubeBaseActivity {
-
+    String id="";
     YouTubePlayerView youTubePlayerView;
     YouTubePlayer.OnInitializedListener onInitializedListener;
     @Override
@@ -27,9 +27,11 @@ public class MainActivity extends YouTubeBaseActivity {
 
 
         String str="https://m.youtube.com/watch?v=";
-
-        String id=s.substring(str.length(),s.indexOf("&"));
-
+        if(s.indexOf("&")>-1) {
+             id = s.substring(str.length(), s.indexOf("&"));
+        }else{
+             id = s.substring(str.length());
+        }
         onInitializedListener=new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
